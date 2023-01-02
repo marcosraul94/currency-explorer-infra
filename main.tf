@@ -8,16 +8,18 @@ module "db" {
   instance_class    = "db.t4g.micro"
   allocated_storage = 20
   vpc_security_group_ids = [aws_security_group.open_security_group.id]
+  maintenance_window = "sun:05:00-sun:06:00"
 
   db_name  = var.db_name
   username = var.db_username
   password = var.db_password
 
-  publicly_accessible    = true
-  create_random_password = false
-  multi_az               = false
-  deletion_protection    = false
-  storage_encrypted      = false
+  publicly_accessible           = true
+  performance_insights_enabled  = true
+  create_random_password        = false
+  multi_az                      = false
+  deletion_protection           = false
+  storage_encrypted             = false
 }
 
 resource "aws_security_group" "open_security_group" {
