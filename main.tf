@@ -18,8 +18,8 @@ module "db" {
   performance_insights_enabled  = true
   create_random_password        = false
   multi_az                      = false
-  deletion_protection           = false
-  storage_encrypted             = false
+  deletion_protection           = false # for now
+  storage_encrypted             = false # not supported by free trial
 }
 
 resource "aws_security_group" "open_security_group" {
